@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from pages.Base_Page import BaseObj
+from selenuim_project_with_class.pages.Base_Page import BaseObj
 
 
 class AuthenticationPage(BaseObj):

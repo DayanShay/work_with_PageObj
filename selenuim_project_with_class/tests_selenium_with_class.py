@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from pages.Main_page import MainPage
+from selenuim_project_with_class.pages.Main_page import MainPage
 from selenium.webdriver.common.by import By
 
 

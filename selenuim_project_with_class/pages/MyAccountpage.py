@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
-from pages.Main_page import *
-from pages.Base_Page import *
+from selenuim_project_with_class.pages.Main_page import *
+from selenuim_project_with_class.pages.Base_Page import *
 
 
 class MyAccount_page(BaseObj):
