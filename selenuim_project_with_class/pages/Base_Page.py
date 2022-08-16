@@ -24,6 +24,8 @@ class BaseObj:
         products_list = self._driver.find_elements(*self.locators["product_container"])
         return products_list
 
+    def get_title(self):
+        return self._driver.title
 
 
 

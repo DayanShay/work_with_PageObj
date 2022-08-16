@@ -31,3 +31,5 @@ class AuthenticationPage(BaseObj):
         error_message_location = self.wait.until(EC.presence_of_element_located(self.locators["error_message_location"]))
         error_text_message = error_message_location.find_element(*self.locators["error_text_message"]).text
         return error_text_message
+
+

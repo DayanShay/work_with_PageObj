@@ -36,7 +36,7 @@ class MainPage(BaseObj):
             price_list[price.strip()] = right_block
         cheapest_price = min(price_list.keys())
         cheapest_dress = price_list[cheapest_price]
-        return cheapest_dress
+        return cheapest_price,cheapest_dress
 
     def click_add_to_cart(self,dress):
         dress.click()
