@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from selenuim_project_with_class.pages.Base_Page import BaseObj
+from playwright_project_with_class.pages.Base_Page import BaseObj
 from selenium.webdriver.support import expected_conditions as EC
 
 class Order_complete_Page(BaseObj):

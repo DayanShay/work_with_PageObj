@@ -7,7 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 class BaseObj:
     def __init__(self, driver):
         self._driver = driver
-        self.wait = WebDriverWait(self._driver, 20)
 
     locators = {"search_bar": (By.ID, "search_query_top"),
                 "submit_search": (By.NAME,"submit_search"),

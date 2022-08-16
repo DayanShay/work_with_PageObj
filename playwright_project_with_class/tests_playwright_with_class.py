@@ -1,7 +1,7 @@
 import pytest
 import json
-from selenium import webdriver
-from selenuim_project_with_class.pages.Main_page import MainPage
+from playwright.sync_api import sync_playwright
+from playwright_project_with_class.pages.Main_page import MainPage
 import allure
 import logging
 
@@ -23,19 +23,21 @@ def open_main_page(get_data_for_test,request):
     :return: None
     """
     if get_data_for_test["browser"] == "Chrome":
-        driver = webdriver.Chrome(path_driver)
-        driver.maximize_window()
-        driver.get(url)
-        yield MainPage(driver)
-        screen_shot_if_faild(driver, request)
-        driver.quit()
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=False)
+            driver = browser.new_page()
+            driver.goto("http://automationpractice.com/index.php")
+            yield MainPage(driver)
+            screen_shot_if_faild(driver, request)
+            driver.close()
     if get_data_for_test["browser"] == "FireFox":
-        driver = webdriver.Firefox(path_driver)
-        driver.maximize_window()
-        driver.get(url)
-        yield MainPage(driver)
-        screen_shot_if_faild(driver, request)
-        driver.quit()
+        with sync_playwright() as p:
+            browser = p.firefox.launch(headless=False)
+            driver = browser.new_page()
+            driver.goto("http://automationpractice.com/index.php")
+            yield MainPage(driver)
+            screen_shot_if_faild(driver, request)
+            driver.close()
 
 def screen_shot_if_faild(driver,request):
     if request.node.rep_call.failed:
@@ -83,20 +85,17 @@ def test_log_in_with_wrong_password(open_main_page):
     Authentication_page = open_main_page.SignIn()
     Authentication_page.login("shay_dayan@gmail.com", "125655")
     error = Authentication_page.get_error_msg()
-    MSG_info(f"Finish log_in_with_wrong_password")
-
-    assert error == "Authentication failed."
+    MSG_info(f"Finish log_in_with_wrong_password{error}")
+    assert error[1] =="Authentication failed."
 
 
 def test_log_in_with_invalid_email(open_main_page):
     MSG_info(f"Start log_in_with_invalid_email")
-
     Authentication_page = open_main_page.SignIn()
     Authentication_page.login("shay_dayanail.com", "123456")
     error = Authentication_page.get_error_msg()
-    MSG_info(f"Finish log_in_with_invalid_email")
-
-    assert error == "Invalid email address."
+    MSG_info(f"Finish log_in_with_invalid_email{error}")
+    assert error[1] =="Invalid email address."
 
 
 def test_log_in_with_short_password(open_main_page):
@@ -104,8 +103,8 @@ def test_log_in_with_short_password(open_main_page):
     Authentication_page = open_main_page.SignIn()
     Authentication_page.login("shay_dayan@gmail.com", "123")
     error = Authentication_page.get_error_msg()
-    MSG_info(f"Finish log_in_with_short_password")
-    assert error == "Invalid password."
+    MSG_info(f"Finish log_in_with_short_password{error}")
+    assert error[1] == "Invalid password."
 
 
 def test_log_in_with_no_details(open_main_page):
@@ -113,12 +112,13 @@ def test_log_in_with_no_details(open_main_page):
     Authentication_page = open_main_page.SignIn()
     Authentication_page.login("", "")
     error = Authentication_page.get_error_msg()
-    MSG_info(f"Finish log_in_with_no_details")
-    assert error == "An email address required."
+    MSG_info(f"Finish log_in_with_no_details{error}")
+    assert error[1] =="An email address required."
 
 def test_log_in_with_right_details(open_main_page,get_data_for_test):
     MSG_info(f"Start log_in_with_no_details")
     authentication_page = open_main_page.SignIn()
     my_account_page = authentication_page.login(get_data_for_test["email"],get_data_for_test["password"])
+    MSG_info(f"Finish log_in_with_right_details {my_account_page._title}")
     assert my_account_page.get_title() == my_account_page._title
 

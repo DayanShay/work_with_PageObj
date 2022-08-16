@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
-from selenuim_project_with_class.pages.Authentication_page import AuthenticationPage
-from selenuim_project_with_class.pages.Base_Page import BaseObj
-from selenuim_project_with_class.pages.Order_page import Orderpage
+from playwright_project_with_class.pages.Authentication_page import AuthenticationPage
+from playwright_project_with_class.pages.Base_Page import BaseObj
+from playwright_project_with_class.pages.Order_page import Orderpage
 from selenium.webdriver.support import expected_conditions as EC
 
 
@@ -9,7 +9,7 @@ class MainPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
-    locators = {"SignIn": (By.CLASS_NAME, "login"),
+    locators = {"SignIn": ".login",
                 "search_bar": (By.ID, "search_query_top"),
                 "submit_search": (By.NAME,"submit_search"),
                 "search_res": (By.ID, "center_column"),
@@ -24,7 +24,7 @@ class MainPage(BaseObj):
                 }
 
     def SignIn(self):
-        self._driver.find_element(*self.locators["SignIn"]).click()
+        self._driver.locator(self.locators["SignIn"]).click()
         return AuthenticationPage(self._driver)
 
     def find_cheap_from_search(self,product_containers):
