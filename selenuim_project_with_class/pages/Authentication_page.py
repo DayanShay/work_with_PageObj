@@ -19,6 +19,6 @@ class AuthenticationPage(BaseObj):
         return AuthenticationPage(self._driver)
 
     def home(self):
-        from pages.Main_page import MainPage
+        from selenuim_project_with_class.pages.Main_page import MainPage
         self._driver.find_element(*self.locators["home"]).click()
         return MainPage(self._driver)
