@@ -1,0 +1,9 @@
+{
+  "email": "shay_dayan@gmail.com",
+  "password": "123456",
+  "browser": "Chrome",
+  "url": "http://automationpractice.com/index.php",
+  "path_driver" : "./chromedriver.exe",
+  "search_word" : "summer"
+
+}
