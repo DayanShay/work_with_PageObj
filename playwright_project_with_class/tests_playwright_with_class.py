@@ -31,7 +31,7 @@ def open_main_page(get_data_for_test: json, request):
         driver = browser.new_page()
         driver.goto(get_data_for_test["url"])
         yield MainPage(driver)
-        screen_shot_if_faild(driver, request)
+        screenshot_if_faild(driver, request)
         driver.close()
 
 
@@ -49,7 +49,13 @@ def test_forget_password_button(open_main_page: MainPage) -> None:
     MSG_info(f"Finish test forget password button")
 
 
-def screen_shot_if_faild(driver: MainPage, request):
+def screenshot_if_faild(driver: MainPage, request)->None:
+    """
+    screenshot_if_faild takes a screenshot if a test faild
+    :param driver:MainPage: the website we work on
+    :param request: request: expect res of api
+    :return:
+    """
     if request.node.rep_call.failed:
         # Make the screen-shot if test failed:
         try:
