@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from playwright_project_with_class.pages.Base_Page import *
 
 class MyAccount_page(BaseObj):
@@ -12,5 +11,5 @@ class MyAccount_page(BaseObj):
     def home(self):
         from playwright_project_with_class.pages.Main_page import MainPage
 
-        self._driver.find_element(*self.locators["home"]).click()
+        self._driver.locator(*self.locators["home"]).click()
         return MainPage(self._driver)
