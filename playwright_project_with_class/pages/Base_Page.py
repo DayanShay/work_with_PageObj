@@ -12,11 +12,21 @@ class BaseObj:
 
     locators = {"search_bar": "id=search_query_top",
                 "submit_search": 'xpath=//*[@id="searchbox"]/button',
-                "search_res": (By.ID, "center_column"),
+                "proceed_checkout": 'text=Proceed to checkout',
+                "ship_check_box": 'id=cgv',
+                "bank_wire_check": 'text=Pay by bank wire',
+                "order_button_location": '.cart_navigation',
+                "i_confirm_button": 'xpath=//*[@id="cart_navigation"]/button',
+                "email": 'id=email',
+                "password": 'id=passwd',
+                "home": ".home",
+                "SubmitLogin": 'id=SubmitLogin',
+                "error_message_location": '.alert',"SignIn": ".login",
+                "product_price": ".product-price",
                 "product_container": ".product-container",
-                "product_block": (By.CLASS_NAME, "right-block"),
-                "product_details": (By.CLASS_NAME, "content_price"),
-                "product_price": (By.TAG_NAME, "span")}
+                "add_to_cart": '.ajax_add_to_cart_button',
+                "msg_confirm": ".cheque-indent"
+                }
 
     def search(self, search_ward: str):
         self._driver.locator(self.locators["search_bar"]).fill(search_ward)
@@ -27,6 +37,3 @@ class BaseObj:
 
     def get_title(self):
         return self._driver.title()
-
-
-

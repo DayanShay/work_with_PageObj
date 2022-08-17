@@ -10,14 +10,16 @@ MSG_info = logging.getLogger(__name__).info
 path_driver = r"C:\Users\shaye\Desktop\study\selproject\chromedriver.exe"
 url = r'http://automationpractice.com/index.php'
 
+
 @pytest.fixture
 def get_data_for_test():
     with open('data_file_for_tests.json') as file_root:
         file_json_data = json.load(file_root)
     return file_json_data
 
+
 @pytest.fixture
-def open_main_page(get_data_for_test,request):
+def open_main_page(get_data_for_test, request):
     """
     This fixture - will open the page and will close it at the end. with yield.
     :return: None
@@ -39,7 +41,8 @@ def open_main_page(get_data_for_test,request):
             screen_shot_if_faild(driver, request)
             driver.close()
 
-def screen_shot_if_faild(driver,request):
+
+def screen_shot_if_faild(driver, request):
     if request.node.rep_call.failed:
         # Make the screen-shot if test failed:
         try:
@@ -51,23 +54,23 @@ def screen_shot_if_faild(driver,request):
         except:
             pass  # just ignore
 
-def test_buy_summer(open_main_page,get_data_for_test):
+
+def test_buy_summer(open_main_page, get_data_for_test):
     MSG_info("Start Buy Cheap Dress")
     Authentication_page = open_main_page.SignIn()
-    MyAccount_page = Authentication_page.login(get_data_for_test["email"],get_data_for_test["password"])
+    MyAccount_page = Authentication_page.login(get_data_for_test["email"], get_data_for_test["password"])
 
     MSG_info("You Have Logged in")
 
     main_page = MyAccount_page.home()
     products_list = main_page.search("summer")
 
-    cheapest_price, cheap_dress = main_page.find_cheap_from_search(products_list)
+    cheapest_price, dress_name, cheap_dress = main_page.find_cheap_from_search(products_list)
+    MSG_info(f"Found the Cheap Dress : {dress_name} , And the Price is : {cheapest_price}")
+
     main_page.click_add_to_cart(cheap_dress)
 
-    # editing the text in side the product text .
-
-    product_details = cheap_dress.inner_text().split('\n')
-    MSG_info(f"Found the Cheap Dress : {product_details[0]} , And the Price is : {cheapest_price}")
+    MSG_info(f"{dress_name} , Was added to Cart")
 
     MSG_info("Start the Buying Process")
 
@@ -80,13 +83,13 @@ def test_buy_summer(open_main_page,get_data_for_test):
     assert confirm_order_msg == order_page._order_msg_templet
 
 
-def test_log_in_with_wrong_password(open_main_page,get_data_for_test):
+def test_log_in_with_wrong_password(open_main_page, get_data_for_test):
     MSG_info(f"Start log_in_with_wrong_password")
     Authentication_page = open_main_page.SignIn()
     Authentication_page.login(get_data_for_test["email"], "a123asd12")
     error = Authentication_page.get_error_msg()
     MSG_info(f"Finish log_in_with_wrong_password{error}")
-    assert error[1] =="Authentication failed."
+    assert error[1] == "Authentication failed."
 
 
 def test_log_in_with_invalid_email(open_main_page):
@@ -95,7 +98,7 @@ def test_log_in_with_invalid_email(open_main_page):
     Authentication_page.login("shay_dayanail.com", "123456")
     error = Authentication_page.get_error_msg()
     MSG_info(f"Finish log_in_with_invalid_email{error}")
-    assert error[1] =="Invalid email address."
+    assert error[1] == "Invalid email address."
 
 
 def test_log_in_with_short_password(open_main_page):
@@ -113,12 +116,12 @@ def test_log_in_with_no_details(open_main_page):
     Authentication_page.login("", "")
     error = Authentication_page.get_error_msg()
     MSG_info(f"Finish log_in_with_no_details{error}")
-    assert error[1] =="An email address required."
+    assert error[1] == "An email address required."
 
-def test_log_in_with_right_details(open_main_page,get_data_for_test):
+
+def test_log_in_with_right_details(open_main_page, get_data_for_test):
     MSG_info(f"Start log_in_with_no_details")
     authentication_page = open_main_page.SignIn()
-    my_account_page = authentication_page.login(get_data_for_test["email"],get_data_for_test["password"])
+    my_account_page = authentication_page.login(get_data_for_test["email"], get_data_for_test["password"])
     MSG_info(f"Finish log_in_with_right_details {my_account_page._title}")
     assert my_account_page.get_title() == my_account_page._title
-

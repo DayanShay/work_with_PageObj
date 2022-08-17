@@ -11,17 +11,6 @@ class MainPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
-    locators = {"SignIn": ".login",
-                "search_bar": "id=search_query_top",
-                "submit_search": 'xpath=//*[@id="searchbox"]/button',
-                "search_res": (By.ID, "center_column"),
-                "product_price": ".product-price",
-                "product_container": ".product-container",
-                "button_container": (By.CLASS_NAME, "button-container"),
-                "add_to_cart": '.ajax_add_to_cart_button',
-                "product_item": (By.TAG_NAME, "span"),
-                "proceed_checkout": (By.LINK_TEXT, "Proceed to checkout")
-                }
 
     def SignIn(self):
         self._driver.locator(self.locators["SignIn"]).click()
@@ -34,7 +23,9 @@ class MainPage(BaseObj):
             price_list[price.strip()] = product_container
         cheapest_price = min(price_list.keys())
         cheapest_dress = price_list[cheapest_price]
-        return cheapest_price,cheapest_dress
+        product_details = cheapest_dress.inner_text().split('\n')
+        dress_name = product_details[0]
+        return cheapest_price,dress_name,cheapest_dress
 
     def click_add_to_cart(self,dress):
         dress.click()
@@ -42,8 +33,7 @@ class MainPage(BaseObj):
         add_button.click()
 
     def click_proceed_to_checkout(self):
-        self.wait.until(EC.presence_of_element_located(self.locators["proceed_checkout"])).click()
-        # proceed_checkout = self._driver.find_element(*self.locators["proceed_checkout"])
-        # proceed_checkout.click()
+        proceed_checkout_button = self._driver.locator(self.locators["proceed_checkout"])
+        proceed_checkout_button.click()
         return Orderpage(self._driver)
 

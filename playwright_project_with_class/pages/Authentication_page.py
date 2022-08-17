@@ -3,19 +3,13 @@ from selenium.webdriver.common.by import By
 from playwright_project_with_class.pages.Base_Page import BaseObj
 from playwright_project_with_class.pages.MyAccountpage import MyAccount_page
 
+
 class AuthenticationPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
 
-    locators = {"email":'id=email',
-                "password":'id=passwd',
-                "home":(By.CLASS_NAME,"home"),
-                "SubmitLogin":'id=SubmitLogin',
-                "error_message_location": '.alert'
-                }
-
-    def login(self,email:str,password:str):
+    def login(self, email: str, password: str):
         self._driver.locator(self.locators["email"]).fill(email)
         self._driver.locator(self.locators["password"]).fill(password)
         self._driver.locator(self.locators["SubmitLogin"]).click()
@@ -27,7 +21,6 @@ class AuthenticationPage(BaseObj):
         return MainPage(self._driver)
 
     def get_error_msg(self):
-
         # msg pop up is slower than the script runs
         time.sleep(1)
 
@@ -35,7 +28,5 @@ class AuthenticationPage(BaseObj):
         error_message_location = error_message_location[0].strip()
         # changing the way the text gets to error_text_message -
         # strip - split - replace - >  'There is X error\n\t\t\n\t\t\t\tERRORMSG.'
-        error_text_message = error_message_location.replace('\t',"").replace('\n\n',"\n").split('\n')
+        error_text_message = error_message_location.replace('\t', "").replace('\n\n', "\n").split('\n')
         return error_text_message
-
-
