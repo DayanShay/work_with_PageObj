@@ -80,10 +80,10 @@ def test_buy_summer(open_main_page,get_data_for_test):
     assert confirm_order_msg == order_page._order_msg_templet
 
 
-def test_log_in_with_wrong_password(open_main_page):
+def test_log_in_with_wrong_password(open_main_page,get_data_for_test):
     MSG_info(f"Start log_in_with_wrong_password")
     Authentication_page = open_main_page.SignIn()
-    Authentication_page.login("shay_dayan@gmail.com", "125655")
+    Authentication_page.login(get_data_for_test["email"], "a123asd12")
     error = Authentication_page.get_error_msg()
     MSG_info(f"Finish log_in_with_wrong_password{error}")
     assert error[1] =="Authentication failed."
