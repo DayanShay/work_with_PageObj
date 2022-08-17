@@ -24,22 +24,16 @@ def open_main_page(get_data_for_test, request):
     This fixture - will open the page and will close it at the end. with yield.
     :return: None
     """
-    if get_data_for_test["browser"] == "Chrome":
-        with sync_playwright() as p:
+    with sync_playwright() as p:
+        if get_data_for_test["browser"] == "Chrome":
             browser = p.chromium.launch(headless=False)
-            driver = browser.new_page()
-            driver.goto("http://automationpractice.com/index.php")
-            yield MainPage(driver)
-            screen_shot_if_faild(driver, request)
-            driver.close()
-    if get_data_for_test["browser"] == "FireFox":
-        with sync_playwright() as p:
+        if get_data_for_test["browser"] == "FireFox":
             browser = p.firefox.launch(headless=False)
-            driver = browser.new_page()
-            driver.goto("http://automationpractice.com/index.php")
-            yield MainPage(driver)
-            screen_shot_if_faild(driver, request)
-            driver.close()
+        driver = browser.new_page()
+        driver.goto("http://automationpractice.com/index.php")
+        yield MainPage(driver)
+        screen_shot_if_faild(driver, request)
+        driver.close()
 
 
 def screen_shot_if_faild(driver, request):
