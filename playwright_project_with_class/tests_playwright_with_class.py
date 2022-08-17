@@ -7,9 +7,6 @@ import logging
 
 MSG_info = logging.getLogger(__name__).info
 
-path_driver = r"C:\Users\shaye\Desktop\study\selproject\chromedriver.exe"
-url = r'http://automationpractice.com/index.php'
-
 
 @pytest.fixture
 def get_data_for_test():
@@ -19,7 +16,7 @@ def get_data_for_test():
 
 
 @pytest.fixture
-def open_main_page(get_data_for_test:json, request):
+def open_main_page(get_data_for_test: json, request):
     """
     This fixture - will open the page and will close it at the end. with yield.
     :return: None
@@ -29,27 +26,30 @@ def open_main_page(get_data_for_test:json, request):
             browser = p.chromium.launch(headless=False)
         if get_data_for_test["browser"] == "Firefox":
             browser = p.firefox.launch(headless=False)
-        if get_data_for_test["browser"] not in ("Firefox","Chrome"):
+        if get_data_for_test["browser"] not in ("Firefox", "Chrome"):
             raise Exception(f"Browser Must be or 'Firefox' or 'Chrome' ONLY ! not -> {get_data_for_test['browser']}")
         driver = browser.new_page()
-        driver.goto("http://automationpractice.com/index.php")
+        driver.goto(get_data_for_test["url"])
         yield MainPage(driver)
         screen_shot_if_faild(driver, request)
         driver.close()
 
-def test_forget_password_button(open_main_page:MainPage)->None:
+
+def test_forget_password_button(open_main_page: MainPage) -> None:
     """
     function clicking on forget password in login form.
-    :param open_page: sync_playwright: website driver page
+    :param open_main_page: sync_playwright: website driver page
     :return: None
     """
+    MSG_info(f"Start test forget password button")
+
     Authentication_page = open_main_page.SignIn()
     Forget_Password_Page = Authentication_page.forget_password()
     assert Forget_Password_Page.get_title() == Forget_Password_Page._title
+    MSG_info(f"Finish test forget password button")
 
 
-
-def screen_shot_if_faild(driver : MainPage, request):
+def screen_shot_if_faild(driver: MainPage, request):
     if request.node.rep_call.failed:
         # Make the screen-shot if test failed:
         try:
@@ -62,7 +62,7 @@ def screen_shot_if_faild(driver : MainPage, request):
             pass  # just ignore
 
 
-def test_buy_summer(open_main_page: MainPage, get_data_for_test:json) -> None:
+def test_buy_summer(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
     function log in the website and  find the cheapest product under summer search and complete Buying
     :param open_main_page: sync_playwright: website driver page
@@ -96,7 +96,7 @@ def test_buy_summer(open_main_page: MainPage, get_data_for_test:json) -> None:
     assert confirm_order_msg == order_page._order_msg_templet
 
 
-def test_log_in_with_wrong_password(open_main_page: MainPage, get_data_for_test:json)-> None:
+def test_log_in_with_wrong_password(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
     test login with test_log_in_with_wrong_password details to website from get_data_for_test
     :param open_main_page:  sync_playwright: website driver page
@@ -111,7 +111,7 @@ def test_log_in_with_wrong_password(open_main_page: MainPage, get_data_for_test:
     assert error[1] == "Authentication failed."
 
 
-def test_log_in_with_invalid_email(open_main_page: MainPage)-> None:
+def test_log_in_with_invalid_email(open_main_page: MainPage) -> None:
     """
     test login with test_login_wrong details to website from get_data_for_test
     :param open_main_page:  sync_playwright: website driver page
@@ -125,7 +125,7 @@ def test_log_in_with_invalid_email(open_main_page: MainPage)-> None:
     assert error[1] == "Invalid email address."
 
 
-def test_log_in_with_short_password(open_main_page: MainPage,get_data_for_test:json)-> None:
+def test_log_in_with_short_password(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
     test login with test_login_wrong details to website
     :param open_main_page:  sync_playwright: website driver page
@@ -140,7 +140,7 @@ def test_log_in_with_short_password(open_main_page: MainPage,get_data_for_test:j
     assert error[1] == "Invalid password."
 
 
-def test_log_in_with_no_details(open_main_page: MainPage)-> None:
+def test_log_in_with_no_details(open_main_page: MainPage) -> None:
     """
     test login with log_in_with_no_details details to website
     :param open_main_page:  MainPage: website driver page
@@ -154,7 +154,7 @@ def test_log_in_with_no_details(open_main_page: MainPage)-> None:
     assert error[1] == "An email address required."
 
 
-def test_log_in_with_right_details(open_main_page: MainPage, get_data_for_test:json)-> None:
+def test_log_in_with_right_details(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
     test login with log_in_with_right_details details to website
     :param open_main_page:  MainPage: website driver page
