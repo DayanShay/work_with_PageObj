@@ -35,19 +35,6 @@ def open_main_page(get_data_for_test: json, request):
         driver.close()
 
 
-def test_forget_password_button(open_main_page: MainPage) -> None:
-    """
-    function clicking on forget password in login form.
-    :param open_main_page: sync_playwright: website driver page
-    :return: None
-    """
-    MSG_info(f"Start test forget password button")
-
-    Authentication_page = open_main_page.SignIn()
-    Forget_Password_Page = Authentication_page.forget_password()
-    assert Forget_Password_Page.get_title() == Forget_Password_Page._title
-    MSG_info(f"Finish test forget password button")
-
 
 def screenshot_if_faild(driver: MainPage, request)->None:
     """
@@ -172,4 +159,16 @@ def test_log_in_with_right_details(open_main_page: MainPage, get_data_for_test: 
     authentication_page = open_main_page.SignIn()
     my_account_page = authentication_page.login(get_data_for_test["email"], get_data_for_test["password"])
     MSG_info(f"Finish log_in_with_right_details {my_account_page._title}")
-    assert my_account_page.get_title() == my_account_page._title
+    assert my_account_page.title == my_account_page._title
+def test_forget_password_button(open_main_page: MainPage) -> None:
+    """
+    function clicking on forget password in login form.
+    :param open_main_page: sync_playwright: website driver page
+    :return: None
+    """
+    MSG_info(f"Start test forget password button")
+
+    Authentication_page = open_main_page.SignIn()
+    Forget_Password_Page = Authentication_page.forget_password()
+    assert Forget_Password_Page.title == Forget_Password_Page._title
+    MSG_info(f"Finish test forget password button")

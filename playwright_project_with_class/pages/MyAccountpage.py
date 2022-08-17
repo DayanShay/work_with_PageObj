@@ -5,7 +5,11 @@ class MyAccount_page(BaseObj):
         super().__init__(driver)
         self._title = 'My account - My Store'
 
-    def home(self):
+    def home(self) -> "MainPage":
+        """
+        clicking on home button
+        :return: MainPage:main page
+        """
         from playwright_project_with_class.pages.Main_page import MainPage
         self._driver.locator(self.locators["home"]).click()
         return MainPage(self._driver)

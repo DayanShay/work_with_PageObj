@@ -9,7 +9,11 @@ class Order_complete_Page(BaseObj):
         self._order_msg_templet = 'Your order on My Store is complete.'
 
 
-    def get_confirm_msg(self):
+    def get_confirm_msg(self) -> str:
+        """
+        get the confirm order msg
+        :return: str : order confirm msg
+        """
         msg_location = self._driver.locator(".cheque-indent").text_content()
         msg_text = msg_location.replace('\n', "").replace('\t', "")
         return msg_text

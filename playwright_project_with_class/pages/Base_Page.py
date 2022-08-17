@@ -25,12 +25,21 @@ class BaseObj:
                 "forget_password":'text="Forgot your password?"'
                 }
 
-    def search(self, search_ward: str):
-        self._driver.locator(self.locators["search_bar"]).fill(search_ward)
+    def search(self, search_word: str) -> ["webdriver"]:
+        """
+        go on top search bar and make a search of the search word
+        :param search_word: str: the word need to search
+        :return: [webdriver] : list of webdriver elements
+        """
+        self._driver.locator(self.locators["search_bar"]).fill(search_word)
         self._driver.locator(self.locators["submit_search"]).click()
         time.sleep(3)
         products_list = self._driver.query_selector_all(self.locators["product_container"])
         return products_list
-
-    def get_title(self):
+    @property
+    def title(self) -> str:
+        """
+        get the title of this page
+        :return: str : page title
+        """
         return self._driver.title()
