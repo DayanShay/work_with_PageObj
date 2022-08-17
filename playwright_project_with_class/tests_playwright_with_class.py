@@ -9,11 +9,15 @@ MSG_info = logging.getLogger(__name__).info
 
 
 @pytest.fixture
-def get_data_for_test()->json:
-    with open('data_file_for_tests.json') as file_root:
-        file_json_data = json.load(file_root)
-    return file_json_data
-
+def get_data_for_test() -> json:
+    try:
+        with open('playwright_project_with_class/data_file_for_tests.json') as file_root:
+            file_json_data = json.load(file_root)
+    except:
+        with open('data_file_for_tests.json') as file_root:
+            file_json_data = json.load(file_root)
+    finally:
+        return file_json_data
 
 @pytest.fixture
 def open_main_page(get_data_for_test: json, request):
@@ -55,9 +59,9 @@ def screenshot_if_faild(driver: MainPage, request)->None:
             pass  # just ignore
 
 
-def test_buy_summer(open_main_page: MainPage, get_data_for_test: json) -> None:
+def test_buy_cheapest_dress_from_search(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
-    function log in the website and  find the cheapest product under summer search and complete Buying
+    function log in the website and  find the cheapest product under a search word and complete Buying
     :param open_main_page: sync_playwright: website driver page
     :param get_data_for_test: json data content
     :return: None
