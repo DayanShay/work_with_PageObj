@@ -6,10 +6,9 @@ class MyAccount_page(BaseObj):
         self._title = 'My account - My Store'
 
 
-    locators = {"home": (By.CLASS_NAME, "home")}
+    locators = {"home": ".home"}
 
     def home(self):
         from playwright_project_with_class.pages.Main_page import MainPage
-
-        self._driver.locator(*self.locators["home"]).click()
+        self._driver.locator(self.locators["home"]).click()
         return MainPage(self._driver)

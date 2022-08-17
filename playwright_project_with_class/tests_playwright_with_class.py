@@ -66,7 +66,7 @@ def test_buy_summer(open_main_page,get_data_for_test):
 
     # editing the text in side the product text .
 
-    product_details = cheap_dress.text.split('\n')
+    product_details = cheap_dress.inner_text().split('\n')
     MSG_info(f"Found the Cheap Dress : {product_details[0]} , And the Price is : {cheapest_price}")
 
     MSG_info("Start the Buying Process")

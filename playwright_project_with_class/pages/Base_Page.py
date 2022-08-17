@@ -1,3 +1,5 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -8,23 +10,23 @@ class BaseObj:
     def __init__(self, driver):
         self._driver = driver
 
-    locators = {"search_bar": (By.ID, "search_query_top"),
-                "submit_search": (By.NAME,"submit_search"),
+    locators = {"search_bar": "id=search_query_top",
+                "submit_search": 'xpath=//*[@id="searchbox"]/button',
                 "search_res": (By.ID, "center_column"),
-                "product_container": (By.CLASS_NAME, "product-container"),
+                "product_container": ".product-container",
                 "product_block": (By.CLASS_NAME, "right-block"),
                 "product_details": (By.CLASS_NAME, "content_price"),
                 "product_price": (By.TAG_NAME, "span")}
 
     def search(self, search_ward: str):
-        self._driver.find_element(*self.locators["search_bar"]).send_keys(search_ward)
-        self.wait.until(EC.element_to_be_clickable(self.locators["submit_search"])).click()
-        self.wait.until(EC.presence_of_element_located(self.locators["search_res"]))
-        products_list = self._driver.find_elements(*self.locators["product_container"])
+        self._driver.locator(self.locators["search_bar"]).fill(search_ward)
+        self._driver.locator(self.locators["submit_search"]).click()
+        time.sleep(3)
+        products_list = self._driver.query_selector_all(self.locators["product_container"])
         return products_list
 
     def get_title(self):
-        return self._driver.title
+        return self._driver.title()
 
 
 
