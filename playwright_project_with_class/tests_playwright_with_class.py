@@ -9,7 +9,7 @@ MSG_info = logging.getLogger(__name__).info
 
 
 @pytest.fixture
-def get_data_for_test():
+def get_data_for_test()->json:
     with open('data_file_for_tests.json') as file_root:
         file_json_data = json.load(file_root)
     return file_json_data
