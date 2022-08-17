@@ -1,10 +1,6 @@
-import time
-
-from selenium.webdriver.common.by import By
 from playwright_project_with_class.pages.Authentication_page import AuthenticationPage
 from playwright_project_with_class.pages.Base_Page import BaseObj
 from playwright_project_with_class.pages.Order_page import Orderpage
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class MainPage(BaseObj):

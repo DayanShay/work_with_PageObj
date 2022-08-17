@@ -1,9 +1,5 @@
 import time
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class BaseObj:
@@ -25,7 +21,8 @@ class BaseObj:
                 "product_price": ".product-price",
                 "product_container": ".product-container",
                 "add_to_cart": '.ajax_add_to_cart_button',
-                "msg_confirm": ".cheque-indent"
+                "msg_confirm": ".cheque-indent",
+                "forget_password":'text="Forgot your password?"'
                 }
 
     def search(self, search_ward: str):

@@ -27,16 +27,29 @@ def open_main_page(get_data_for_test, request):
     with sync_playwright() as p:
         if get_data_for_test["browser"] == "Chrome":
             browser = p.chromium.launch(headless=False)
-        if get_data_for_test["browser"] == "FireFox":
+        if get_data_for_test["browser"] == "Firefox":
             browser = p.firefox.launch(headless=False)
+        if get_data_for_test["browser"] not in ("Firefox","Chrome"):
+            raise Exception(f"Browser Must be or 'Firefox' or 'Chrome' ONLY ! not -> {get_data_for_test['browser']}")
         driver = browser.new_page()
         driver.goto("http://automationpractice.com/index.php")
         yield MainPage(driver)
         screen_shot_if_faild(driver, request)
         driver.close()
 
+def test_forget_password_button(open_main_page:sync_playwright)->None:
+    """
+    function clicking on forget password in login form.
+    :param open_page: sync_playwright: website driver page
+    :return: None
+    """
+    Authentication_page = open_main_page.SignIn()
+    Forget_Password_Page = Authentication_page.forget_password()
+    assert Forget_Password_Page.get_title() == Forget_Password_Page._title
 
-def screen_shot_if_faild(driver, request):
+
+
+def screen_shot_if_faild(driver : sync_playwright, request):
     if request.node.rep_call.failed:
         # Make the screen-shot if test failed:
         try:
