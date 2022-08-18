@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
-from selenuim_project_with_class.pages.Authentication_page import AuthenticationPage
-from selenuim_project_with_class.pages.Base_Page import BaseObj
-from selenuim_project_with_class.pages.Order_page import Orderpage
+from selenuim_project_with_PageObj.PageObjs.Authentication_page import AuthenticationPage
+from selenuim_project_with_PageObj.PageObjs.Base_Page import BaseObj
+from selenuim_project_with_PageObj.PageObjs.Order_page import Orderpage
 from selenium.webdriver.support import expected_conditions as EC
 
 

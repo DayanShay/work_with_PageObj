@@ -1,4 +1,4 @@
-from selenuim_project_with_class.pages.Base_Page import BaseObj
+from selenuim_project_with_PageObj.PageObjs.Base_Page import BaseObj
 
 
 class ForgetPasswordPage(BaseObj):

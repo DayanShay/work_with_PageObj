@@ -1,7 +1,7 @@
 import pytest
 import json
 from selenium import webdriver
-from selenuim_project_with_class.pages.Main_page import MainPage
+from selenuim_project_with_PageObj.PageObjs.Main_page import MainPage
 import allure
 import logging
 
@@ -16,7 +16,7 @@ def get_data_for_test() -> json:
     :return: json : data for tests.
     """
     try:
-        with open('selenuim_project_with_class/data_file_for_tests.json') as file_root:
+        with open('selenuim_project_with_PageObj/data_file_for_tests.json') as file_root:
             file_json_data = json.load(file_root)
     except:
         with open('data_file_for_tests.json') as file_root:

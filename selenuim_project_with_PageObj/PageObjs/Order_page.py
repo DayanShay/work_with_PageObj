@@ -1,6 +1,6 @@
 import logging
-from selenuim_project_with_class.pages.order_complete_page import Order_complete_Page
-from selenuim_project_with_class.pages.Base_Page import BaseObj
+from selenuim_project_with_PageObj.PageObjs.order_complete_page import Order_complete_Page
+from selenuim_project_with_PageObj.PageObjs.Base_Page import BaseObj
 from selenium.webdriver.support import expected_conditions as EC
 
 MSG_info = logging.getLogger(__name__).info

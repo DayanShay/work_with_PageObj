@@ -1,7 +1,7 @@
-from selenuim_project_with_class.pages.Base_Page import BaseObj
+from selenuim_project_with_PageObj.PageObjs.Base_Page import BaseObj
 from selenium.webdriver.support import expected_conditions as EC
-from selenuim_project_with_class.pages.MyAccountpage import MyAccount_page
-from selenuim_project_with_class.pages.forget_password_page import ForgetPasswordPage
+from selenuim_project_with_PageObj.PageObjs.MyAccountpage import MyAccount_page
+from selenuim_project_with_PageObj.PageObjs.forget_password_page import ForgetPasswordPage
 
 
 class AuthenticationPage(BaseObj):
@@ -25,7 +25,7 @@ class AuthenticationPage(BaseObj):
         Click on Home button on the page
         :return: MainPage:
         """
-        from selenuim_project_with_class.pages.Main_page import MainPage
+        from selenuim_project_with_PageObj.PageObjs.Main_page import MainPage
         self._driver.find_element(*self.locators["home"]).click()
         return MainPage(self._driver)
 

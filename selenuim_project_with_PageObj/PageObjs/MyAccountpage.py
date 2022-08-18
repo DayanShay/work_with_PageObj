@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from selenuim_project_with_class.pages.Base_Page import *
+from selenuim_project_with_PageObj.PageObjs.Base_Page import *
 
 
 class MyAccount_page(BaseObj):
@@ -12,7 +12,7 @@ class MyAccount_page(BaseObj):
         clicking on home button
         :return: MainPage:main page
         """
-        from selenuim_project_with_class.pages.Main_page import MainPage
+        from selenuim_project_with_PageObj.PageObjs.Main_page import MainPage
 
         self._driver.find_element(*self.locators["home"]).click()
         return MainPage(self._driver)
