@@ -20,7 +20,7 @@ pip install -r .\playwright_project_with_class\requirements.txt
 
 If you want to Change Defualt settings 
 
-file data_file_for_tests.json
+file data_file_for_tests.json < - inside the directory
 
 ```json
 {
