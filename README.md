@@ -30,7 +30,7 @@ file data_file_for_tests.json < - inside the directory
   "browser": "WebDriver"  <- insert here witch brwoser you want to use for the tests - "Chrome" OR "Firefox" ONLY ! 
   "url": "http://automationpractice.com/index.php" <- If You Have your Local Server - you can change the url here.
   "path_driver" : "Full_Path_to_Driver" <- Suppurt Only Chrome or Firefox !
-  "search_word" : "summer" <- Do not Change The Search Word ! 
+  "search_word" : "summer" <- Try Change The Search Word ! 
 
 }
 ```
