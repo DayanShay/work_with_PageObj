@@ -41,7 +41,7 @@ def open_main_page(get_data_for_test: json):
 
 def test_buy_cheapest_item_from_search(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
-    function log in the website and  find the cheapest product under a search word and complete Buying
+    function test_buy_cheapest_item_from_search log in the website and  find the cheapest product under a search word and complete Buying
     :param open_main_page: sync_playwright: website driver page
     :param get_data_for_test: json data content
     :return: None
