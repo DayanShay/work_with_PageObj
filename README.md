@@ -1,5 +1,5 @@
 # work_with_class
-Sela Project Pytest playwright with class
+Sela Project Pytest playwright with PageObj
 
 Before Runing - tests on this Branch - Must do -
 
