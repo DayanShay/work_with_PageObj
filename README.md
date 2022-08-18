@@ -6,14 +6,14 @@ Before Runing - tests on this Branch - Must do -
 1) Download project Dictionary
 
 
-Download - > https://github.com/DayanShay/work_with_class/tree/playwright/playwright_project_with_class
+Download - > https://github.com/DayanShay/work_with_PageObj/tree/playwright/playwright_project_with_PageObj
 
 2) Install requirements
 
 "FullPath" < - insert full path to requirements.txt file.
 
 ```commandline
-pip install -r .\playwright_project_with_class\requirements.txt 
+pip install -r .\playwright_project_with_PageObj\requirements.txt 
 ```
 
 3) Configuration settings 
@@ -37,7 +37,7 @@ Run regularly with Python - pytest
 "FullPath" < - insert full path to tests file.
 
 ```commandline
-pytest "FullPath"\playwright_project_with_class\tests_playwright_with_class.py
+pytest "FullPath"\playwright_project_with_PageObj\tests_playwright_with_PageObj.py
 ```
 
 
@@ -46,7 +46,7 @@ Running allure report
 "FullPath" < - insert full path to tests file.
 
 ```commandline
-pytest --alluredir=playwrightReports\ "FullPath"\playwright_project_with_class\tests_playwright_with_class.py
+pytest --alluredir=playwrightReports\ "FullPath"\playwright_project_with_PageObj\tests_playwright_with_PageObj.py
 ```
 "FullPath" < - insert full path to Reports directory.
 
