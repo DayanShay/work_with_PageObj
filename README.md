@@ -1,4 +1,4 @@
-# work_with_class
+# work_with_PageObj
 Sela Project Pytest playwright with PageObj
 
 Before Runing - tests on this Branch - Must do -
