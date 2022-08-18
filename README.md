@@ -28,6 +28,7 @@ file data_file_for_tests.json < - inside the directory
   "password": "Your Password", <- insert here your Password that you have signup with
   "browser": "WebDriver"  <- insert here witch brwoser you want to use for the tests - "Chrome" OR "Firefox" ONLY ! 
   "url": "http://automationpractice.com/index.php" <- If You Have your Local Server - you can change the url here.
+  "search_word" : "summer" <- Try Change The Search Word ! 
 }
 ```
 ![image](https://user-images.githubusercontent.com/108628136/185473394-a5f5283d-fbaf-47e9-8093-19629a4538f7.png)
