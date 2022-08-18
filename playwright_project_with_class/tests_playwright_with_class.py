@@ -20,7 +20,7 @@ def get_data_for_test() -> json:
         return file_json_data
 
 @pytest.fixture
-def open_main_page(get_data_for_test: json, request):
+def open_main_page(get_data_for_test: json):
     """
     This fixture - will open the page and will close it at the end. with yield.
     :return: None
@@ -35,28 +35,8 @@ def open_main_page(get_data_for_test: json, request):
         driver = browser.new_page()
         driver.goto(get_data_for_test["url"])
         yield MainPage(driver)
-        screenshot_if_faild(driver, request)
         driver.close()
 
-
-
-def screenshot_if_faild(driver: MainPage, request)->None:
-    """
-    screenshot_if_faild takes a screenshot if a test faild
-    :param driver:MainPage: the website we work on
-    :param request: request: expect res of api
-    :return:
-    """
-    if request.node.rep_call.failed:
-        # Make the screen-shot if test failed:
-        try:
-            driver.execute_script("document.body.bgColor = 'white';")
-
-            allure.attach(driver.get_screenshot_as_png(),
-                          name=request.function.__name__,
-                          attachment_type=allure.attachment_type.PNG)
-        except:
-            pass  # just ignore
 
 
 def test_buy_cheapest_dress_from_search(open_main_page: MainPage, get_data_for_test: json) -> None:
