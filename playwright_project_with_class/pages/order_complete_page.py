@@ -14,6 +14,6 @@ class Order_complete_Page(BaseObj):
         get the confirm order msg
         :return: str : order confirm msg
         """
-        msg_location = self._driver.locator(".cheque-indent").text_content()
+        msg_location = self._driver.locator(self.locators["msg_confirm"]).text_content()
         msg_text = msg_location.replace('\n', "").replace('\t', "")
         return msg_text
