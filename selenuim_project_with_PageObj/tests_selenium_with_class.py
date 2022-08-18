@@ -67,9 +67,9 @@ def screenshot_if_faild(driver: MainPage, request) -> None:
             pass  # just ignore
 
 
-def test_buy_summer(open_main_page: MainPage, get_data_for_test: json) -> None:
+def test_buy_cheapest_item_from_search(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
-    function log in the website and  find the cheapest product under summer search and complete Buying
+    function test_buy_cheapest_item_from_search log in the website and  find the cheapest product under summer search and complete Buying
     :param open_main_page: sync_playwright: website driver page
     :param get_data_for_test: json data content
     :return: None
