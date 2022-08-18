@@ -3,14 +3,24 @@ Sela Project Pytest selenium
 
 
 Before Runing - tests on this Branch - Must do - 
+
+1) Download project Dictionary
+
+Download - > https://github.com/DayanShay/work_with_class/tree/selenium/selenuim_project_with_class
+
+2) Install requirements
+
+"FullPath" < - insert full path to requirements.txt file.
+
 ```commandline
-pip install -r .\selenuim_project_with_class\requirements.txt 
+pip install -r "FullPath"\selenuim_project_with_class\requirements.txt 
 ```
 
-Configuration  :
+3) Configuration settings 
+
 If you want to Change Defualt settings 
 
-file data_file_for_tests.json
+file data_file_for_tests.json < - inside the directory
 
 ```json
 {
@@ -25,10 +35,23 @@ file data_file_for_tests.json
 ```
 ![image](https://user-images.githubusercontent.com/108628136/185474790-98e2aea6-388b-4dff-bea9-4fe38d964951.png)
 
-Running allure report :
+Run regularly with Python - pytest
+
+"FullPath" < - insert full path to tests file.
+
 ```commandline
-pytest --alluredir=selenuimReports\ .\playwright\test_playwright.py 
+pytest "FullPath"\selenium_project_with_class\tests_selenium_with_class.py
 ```
+
+Running allure report :
+
+"FullPath" < - insert full path to tests file.
+
+```commandline
+pytest --alluredir=selenuimReports\ "FullPath"\selenium_project_with_class\tests_selenium_with_class.py
+```
+"FullPath" < - insert full path to Reports directory.
+
 ```commandline
 allure serve .\selenuimReports\
 ```
