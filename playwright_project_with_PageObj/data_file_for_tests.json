@@ -2,5 +2,6 @@
   "email": "shay_dayan@gmail.com",
   "password": "123456",
   "browser": "Chrome",
-  "url": "http://automationpractice.com/index.php"
+  "url": "http://automationpractice.com/index.php",
+  "search_word": "summer"
 }

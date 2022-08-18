@@ -53,7 +53,7 @@ def test_buy_cheapest_item_from_search(open_main_page: MainPage, get_data_for_te
     MSG_info("You Have Logged in")
 
     main_page = MyAccount_page.home()
-    products_list = main_page.search("summer")
+    products_list = main_page.search(get_data_for_test["search_word"])
 
     cheapest_price, dress_name, cheap_dress = main_page.find_cheap_from_search(products_list)
     MSG_info(f"Found the Cheap Dress : {dress_name} , And the Price is : {cheapest_price}")
