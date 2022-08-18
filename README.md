@@ -1,11 +1,23 @@
 # work_with_class
 Sela Project Pytest playwright with class
 
-Before Runing - tests on this Branch - Must do - 
+Before Runing - tests on this Branch - Must do -
+
+1) Download project Dictionary
+
+
+Download - > https://github.com/DayanShay/work_with_class/tree/playwright/playwright_project_with_class
+
+2) Install requirements
+
+"FullPath" < - insert full path to requirements.txt file.
+
 ```commandline
 pip install -r .\playwright_project_with_class\requirements.txt 
 ```
-Configuration file:
+
+3) Configuration settings 
+
 If you want to Change Defualt settings 
 
 file data_file_for_tests.json
