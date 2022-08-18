@@ -31,7 +31,7 @@ file data_file_for_tests.json < - inside the directory
   "search_word" : "summer" <- Try Change The Search Word ! 
 }
 ```
-![image](https://user-images.githubusercontent.com/108628136/185473394-a5f5283d-fbaf-47e9-8093-19629a4538f7.png)
+![image](https://user-images.githubusercontent.com/108628136/185513559-8e01d551-b6d1-46f1-9430-d8034e7d94c8.png)
 
 Run regularly with Python - pytest
 
