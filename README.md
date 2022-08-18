@@ -3,18 +3,18 @@ Sela Project Pytest selenium with PageObj
 
 
 
-Before Runing - tests on this Branch - Must do - 
+Before Running - tests on this Branch - Must do - 
 
 1) Download project Dictionary
 
-Download - > https://github.com/DayanShay/work_with_class/tree/selenium/selenuim_project_with_class
+Download - > https://github.com/DayanShay/work_with_PageObj/tree/selenium/selenuim_project_with_PageObj
 
 2) Install requirements
 
 "FullPath" < - insert full path to requirements.txt file.
 
 ```commandline
-pip install -r "FullPath"\selenuim_project_with_class\requirements.txt 
+pip install -r "FullPath"\selenuim_project_with_PageObj\requirements.txt 
 ```
 
 3) Configuration settings 
@@ -41,7 +41,7 @@ Run regularly with Python - pytest
 "FullPath" < - insert full path to tests file.
 
 ```commandline
-pytest "FullPath"\selenium_project_with_class\tests_selenium_with_class.py
+pytest "FullPath"\selenium_project_with_PageObj\tests_selenium_with_PageObj.py
 ```
 
 Running allure report :
@@ -49,7 +49,7 @@ Running allure report :
 "FullPath" < - insert full path to tests file.
 
 ```commandline
-pytest --alluredir=selenuimReports\ "FullPath"\selenium_project_with_class\tests_selenium_with_class.py
+pytest --alluredir=selenuimReports\ "FullPath"\selenium_project_with_PageObj\tests_selenium_with_PageObj.py
 ```
 "FullPath" < - insert full path to Reports directory.
 
