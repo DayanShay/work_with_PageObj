@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
-from playwright_project_with_class.pages.Base_Page import BaseObj
-from playwright_project_with_class.pages.MyAccountpage import MyAccount_page
+from playwright_project_with_PageObj.PageObjs.Base_Page import BaseObj
+from playwright_project_with_PageObj.PageObjs.MyAccountpage import MyAccount_page
 
 
 class ForgetPasswordPage(BaseObj):

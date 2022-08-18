@@ -1,6 +1,6 @@
-from playwright_project_with_class.pages.Authentication_page import AuthenticationPage
-from playwright_project_with_class.pages.Base_Page import BaseObj
-from playwright_project_with_class.pages.Order_page import Orderpage
+from playwright_project_with_PageObj.PageObjs.Authentication_page import AuthenticationPage
+from playwright_project_with_PageObj.PageObjs.Base_Page import BaseObj
+from playwright_project_with_PageObj.PageObjs.Order_page import Orderpage
 
 
 class MainPage(BaseObj):

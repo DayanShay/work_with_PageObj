@@ -1,7 +1,7 @@
 import pytest
 import json
 from playwright.sync_api import sync_playwright
-from playwright_project_with_class.pages.Main_page import MainPage
+from playwright_project_with_PageObj.PageObjs.Main_page import MainPage
 import allure
 import logging
 
@@ -11,7 +11,7 @@ MSG_info = logging.getLogger(__name__).info
 @pytest.fixture
 def get_data_for_test() -> json:
     try:
-        with open('playwright_project_with_class/data_file_for_tests.json') as file_root:
+        with open('playwright_project_with_PageObj/data_file_for_tests.json') as file_root:
             file_json_data = json.load(file_root)
     except:
         with open('data_file_for_tests.json') as file_root:
