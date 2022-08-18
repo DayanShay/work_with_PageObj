@@ -1,5 +1,5 @@
 # work_with_class
-Sela Project Pytest selenium and playwright with class
+Sela Project Pytest selenium and playwright with PageObj
 
 For both pojects install the needed modules i.e pytest, pytest and so forth using the requirements.txt file.
 
