@@ -7,7 +7,6 @@ class MainPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
-
     def SignIn(self) -> AuthenticationPage:
         """
         click on the singin  button
@@ -16,7 +15,7 @@ class MainPage(BaseObj):
         self._driver.locator(self.locators["SignIn"]).click()
         return AuthenticationPage(self._driver)
 
-    def find_cheap_from_search(self,product_containers) -> (str,str,"webdriver"):
+    def find_cheap_from_search(self, product_containers) -> (str, str, "webdriver"):
         """
                find the cheapest item from the search results
                :param product_containers:
@@ -32,9 +31,9 @@ class MainPage(BaseObj):
         cheapest_dress = price_list[cheapest_price]
         product_details = cheapest_dress.inner_text().split('\n')
         dress_name = product_details[0]
-        return cheapest_price,dress_name,cheapest_dress
+        return cheapest_price, dress_name, cheapest_dress
 
-    def click_add_to_cart(self,dress)->None:
+    def click_add_to_cart(self, dress) -> None:
         """
         clicking on add to cart on the specific item
         :param dress: WebElement: the element in the page
@@ -44,7 +43,7 @@ class MainPage(BaseObj):
         add_button = dress.query_selector(self.locators["add_to_cart"])
         add_button.click()
 
-    def click_proceed_to_checkout(self)->Orderpage:
+    def click_proceed_to_checkout(self) -> Orderpage:
         """
         click on proceed to checkout on pop up window
         :return: Orderpage: the order page
@@ -52,4 +51,3 @@ class MainPage(BaseObj):
         proceed_checkout_button = self._driver.locator(self.locators["proceed_checkout"])
         proceed_checkout_button.click()
         return Orderpage(self._driver)
-

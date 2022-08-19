@@ -12,8 +12,6 @@ class Orderpage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
-
-
     def complete_order(self) -> Order_complete_Page:
         """
         doing all steps of order page at once
@@ -59,7 +57,6 @@ class Orderpage(BaseObj):
         proceed_checkout.click()
         MSG_info("Clicked on bank wire method")
 
-
     def check_i_confirm_order(self) -> None:
         """
         check_i_confirm_order
@@ -68,5 +65,3 @@ class Orderpage(BaseObj):
         i_confirm_button = self._driver.locator(self.locators["i_confirm_button"]).last
         i_confirm_button.click()
         MSG_info("Clicked on i confirm order")
-
-

@@ -8,7 +8,6 @@ class Order_complete_Page(BaseObj):
         super().__init__(driver)
         self._order_msg_templet = 'Your order on My Store is complete.'
 
-
     def get_confirm_msg(self) -> str:
         """
         get the confirm order msg

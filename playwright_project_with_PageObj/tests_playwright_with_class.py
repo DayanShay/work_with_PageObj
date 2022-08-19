@@ -19,6 +19,7 @@ def get_data_for_test() -> json:
     finally:
         return file_json_data
 
+
 @pytest.fixture
 def open_main_page(get_data_for_test: json):
     """
@@ -36,7 +37,6 @@ def open_main_page(get_data_for_test: json):
         driver.goto(get_data_for_test["url"])
         yield MainPage(driver)
         driver.close()
-
 
 
 def test_buy_cheapest_item_from_search(open_main_page: MainPage, get_data_for_test: json) -> None:
@@ -147,6 +147,8 @@ def test_log_in_with_right_details(open_main_page: MainPage, get_data_for_test: 
     my_account_page = authentication_page.login(get_data_for_test["email"], get_data_for_test["password"])
     MSG_info(f"Finish log_in_with_right_details {my_account_page._title}")
     assert my_account_page.title == my_account_page._title
+
+
 def test_forget_password_button(open_main_page: MainPage) -> None:
     """
     function clicking on forget password in login form.

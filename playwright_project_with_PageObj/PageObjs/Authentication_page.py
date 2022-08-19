@@ -8,8 +8,7 @@ class AuthenticationPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
-
-    def login(self, email: str, password: str)-> MyAccount_page:
+    def login(self, email: str, password: str) -> MyAccount_page:
         """
         Make Login on page
         :param email: str : email need to fill in

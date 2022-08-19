@@ -1,7 +1,6 @@
 import time
 
 
-
 class BaseObj:
     def __init__(self, driver):
         self._driver = driver
@@ -18,12 +17,12 @@ class BaseObj:
                 "password": 'id=passwd',
                 "home": ".home",
                 "SubmitLogin": 'id=SubmitLogin',
-                "error_message_location": '.alert',"SignIn": ".login",
+                "error_message_location": '.alert', "SignIn": ".login",
                 "product_price": ".product-price",
                 "product_container": ".product-container",
                 "add_to_cart": '.ajax_add_to_cart_button',
                 "msg_confirm": ".cheque-indent",
-                "forget_password":'text="Forgot your password?"'
+                "forget_password": 'text="Forgot your password?"'
                 }
 
     def search(self, search_word: str) -> ["webdriver"]:
@@ -38,6 +37,7 @@ class BaseObj:
         products_list = self._driver.query_selector_all(self.locators["product_container"])
         self._search_word = search_word
         return products_list
+
     @property
     def title(self) -> str:
         """
