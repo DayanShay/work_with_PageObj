@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 MSG_info = logging.getLogger(__name__).info
 
+
 class Orderpage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
@@ -37,7 +38,6 @@ class Orderpage(BaseObj):
         proceed_checkout_buttons.find_element(*self.locators["proceed_checkout_order"]).click()
         MSG_info("Clicked on proceed to checkout")
 
-
     def check_ship_box_and_proceed_to_checkout(self) -> None:
         """
         check_ship_box_and_proceed_to_checkout
@@ -47,8 +47,7 @@ class Orderpage(BaseObj):
         MSG_info("Clicked on ship box")
         self.click_proceed_to_checkout_order()
 
-
-    def check_on_bank_wire(self)-> None:
+    def check_on_bank_wire(self) -> None:
         """
         check_on_bank_wire
         """
@@ -64,4 +63,3 @@ class Orderpage(BaseObj):
         i_confirm_button = order_button_location.find_element(*self.locators["i_confirm_button"])
         i_confirm_button.click()
         MSG_info("Clicked on i confirm order")
-

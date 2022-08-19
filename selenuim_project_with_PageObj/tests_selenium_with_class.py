@@ -8,7 +8,6 @@ import logging
 MSG_info = logging.getLogger(__name__).info
 
 
-
 @pytest.fixture
 def get_data_for_test() -> json:
     """
@@ -23,7 +22,6 @@ def get_data_for_test() -> json:
             file_json_data = json.load(file_root)
     finally:
         return file_json_data
-
 
 
 @pytest.fixture
@@ -94,7 +92,7 @@ def test_buy_cheapest_item_from_search(open_main_page: MainPage, get_data_for_te
     assert confirm_order_msg == order_page._order_msg_templet
 
 
-def test_log_in_with_wrong_password(open_main_page: MainPage, get_data_for_test: json)-> None:
+def test_log_in_with_wrong_password(open_main_page: MainPage, get_data_for_test: json) -> None:
     """
     test login with test_log_in_with_wrong_password details to website from get_data_for_test
     :param open_main_page:  MainPage: website driver page
@@ -109,7 +107,7 @@ def test_log_in_with_wrong_password(open_main_page: MainPage, get_data_for_test:
     assert error == "Authentication failed."
 
 
-def test_log_in_with_invalid_email(open_main_page: MainPage)-> None:
+def test_log_in_with_invalid_email(open_main_page: MainPage) -> None:
     """
     test login with test_login_wrong details to website from get_data_for_test
     :param open_main_page:  MainPage: website driver page

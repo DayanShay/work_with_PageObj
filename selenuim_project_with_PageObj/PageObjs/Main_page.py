@@ -17,7 +17,7 @@ class MainPage(BaseObj):
         self._driver.find_element(*self.locators["sign_In"]).click()
         return AuthenticationPage(self._driver)
 
-    def find_cheap_from_search(self, product_containers) -> (str,"webdriver"):
+    def find_cheap_from_search(self, product_containers) -> (str, "webdriver"):
         """
         find the cheapest item from the search results
         :param product_containers:
@@ -35,7 +35,7 @@ class MainPage(BaseObj):
         cheapest_dress = price_list[cheapest_price]
         return cheapest_price, cheapest_dress
 
-    def click_add_to_cart(self, dress:"WebElement")->None:
+    def click_add_to_cart(self, dress: "WebElement") -> None:
         """
         clicking on add to cart on the specific item
         :param dress: WebElement: the element in the page

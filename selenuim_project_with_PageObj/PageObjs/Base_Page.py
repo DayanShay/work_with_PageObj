@@ -49,6 +49,7 @@ class BaseObj:
         products_list = self._driver.find_elements(*self.locators["product_container"])
         self._search_word = search_word
         return products_list
+
     @property
     def title(self) -> str:
         """
