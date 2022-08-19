@@ -24,7 +24,7 @@ class MainPage(BaseObj):
         :return: tuple(str,"webdriver"): the price and the item itself
         """
         if len(product_containers) == 0:
-            raise Exception("No Products found in Search Res")
+            raise Exception(f"No Products found in Search for -> {self._search_word}")
         price_list = {}
         for product_container in product_containers:
             right_block = product_container.find_element(*self.locators["product_block"])
