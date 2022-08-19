@@ -5,6 +5,7 @@ import time
 class BaseObj:
     def __init__(self, driver):
         self._driver = driver
+        self._search_word = None
 
     locators = {"search_bar": "id=search_query_top",
                 "submit_search": 'xpath=//*[@id="searchbox"]/button',
@@ -35,6 +36,7 @@ class BaseObj:
         self._driver.locator(self.locators["submit_search"]).click()
         time.sleep(3)
         products_list = self._driver.query_selector_all(self.locators["product_container"])
+        self._search_word = search_word
         return products_list
     @property
     def title(self) -> str:
