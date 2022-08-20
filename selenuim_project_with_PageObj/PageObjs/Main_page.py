@@ -9,6 +9,14 @@ class MainPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
+    locators = {"sign_In": (By.CLASS_NAME, "login"),
+                "button_container": (By.CLASS_NAME, "button-container"),
+                "add_to_cart": (By.TAG_NAME, "a"),
+                "proceed_checkout": (By.LINK_TEXT, "Proceed to checkout"),
+                "product_block": (By.CLASS_NAME, "right-block"),
+                "product_details": (By.CLASS_NAME, "content_price"),
+                "product_price": (By.TAG_NAME, "span"),
+                }
     def sign_In(self) -> AuthenticationPage:
         """
         click on the singin  button

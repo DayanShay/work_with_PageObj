@@ -1,4 +1,5 @@
 import logging
+from selenium.webdriver.common.by import By
 from selenuim_project_with_PageObj.PageObjs.order_complete_page import Order_complete_Page
 from selenuim_project_with_PageObj.PageObjs.Base_Page import BaseObj
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,7 +10,13 @@ MSG_info = logging.getLogger(__name__).info
 class Orderpage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
-
+    locators = {"proceed_checkout_buttons": (By.CLASS_NAME, "cart_navigation"),
+                "proceed_checkout_order": (By.CLASS_NAME, "button"),
+                "ship_check_box": (By.ID, "uniform-cgv"),
+                "bank_wire_check": (By.CLASS_NAME, "bankwire"),
+                "order_button_location": (By.ID, "cart_navigation"),
+                "i_confirm_button": (By.TAG_NAME, "button")
+                }
     def complete_order(self) -> Order_complete_Page:
         """
         doing all steps of order page at once
