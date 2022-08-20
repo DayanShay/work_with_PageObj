@@ -7,6 +7,13 @@ class MainPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
+    locators = {"add_to_cart": '.ajax_add_to_cart_button',
+                "product_price": ".product-price",
+                "proceed_checkout": 'text=Proceed to checkout',
+                "SignIn": ".login"
+
+    }
+
     def SignIn(self) -> AuthenticationPage:
         """
         click on the singin  button

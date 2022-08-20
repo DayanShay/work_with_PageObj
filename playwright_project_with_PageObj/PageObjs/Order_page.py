@@ -11,7 +11,14 @@ MSG_info = logging.getLogger(__name__).info
 class Orderpage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
-
+    locators = {"proceed_checkout": 'text=Proceed to checkout',
+                "ship_check_box": 'id=cgv',
+                "bank_wire_check": 'text=Pay by bank wire',
+                "order_button_location": '.cart_navigation',
+                "i_confirm_button": 'xpath=//*[@id="cart_navigation"]/button',
+                "product_container": ".product-container",
+                "msg_confirm": ".cheque-indent"
+    }
     def complete_order(self) -> Order_complete_Page:
         """
         doing all steps of order page at once

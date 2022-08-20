@@ -8,6 +8,12 @@ class AuthenticationPage(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
 
+    locators = {"email": 'id=email',
+                "password": 'id=passwd',
+                "SubmitLogin": 'id=SubmitLogin',
+                "error_message_location": '.alert',
+                "forget_password": 'text="Forgot your password?"'
+                }
     def login(self, email: str, password: str) -> MyAccount_page:
         """
         Make Login on page
@@ -48,5 +54,5 @@ class AuthenticationPage(BaseObj):
         click on forget password button on login section
         :return: ForgetPasswordPage:
         """
-        self._driver.locator('text="Forgot your password?"').click()
+        self._driver.locator(self.locators["forget_password"]).click()
         return ForgetPasswordPage(self._driver)

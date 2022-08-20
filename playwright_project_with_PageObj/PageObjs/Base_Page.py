@@ -6,24 +6,10 @@ class BaseObj:
         self._driver = driver
         self._search_word = None
 
-    locators = {"search_bar": "id=search_query_top",
-                "submit_search": 'xpath=//*[@id="searchbox"]/button',
-                "proceed_checkout": 'text=Proceed to checkout',
-                "ship_check_box": 'id=cgv',
-                "bank_wire_check": 'text=Pay by bank wire',
-                "order_button_location": '.cart_navigation',
-                "i_confirm_button": 'xpath=//*[@id="cart_navigation"]/button',
-                "email": 'id=email',
-                "password": 'id=passwd',
-                "home": ".home",
-                "SubmitLogin": 'id=SubmitLogin',
-                "error_message_location": '.alert', "SignIn": ".login",
-                "product_price": ".product-price",
-                "product_container": ".product-container",
-                "add_to_cart": '.ajax_add_to_cart_button',
-                "msg_confirm": ".cheque-indent",
-                "forget_password": 'text="Forgot your password?"'
-                }
+    locators_base = {"search_bar": "id=search_query_top",
+                     "submit_search": 'xpath=//*[@id="searchbox"]/button',
+                     "product_container": ".product-container"
+                     }
 
     def search(self, search_word: str) -> ["webdriver"]:
         """
@@ -31,10 +17,10 @@ class BaseObj:
         :param search_word: str: the word need to search
         :return: [webdriver] : list of webdriver elements
         """
-        self._driver.locator(self.locators["search_bar"]).fill(search_word)
-        self._driver.locator(self.locators["submit_search"]).click()
+        self._driver.locator(self.locators_base["search_bar"]).fill(search_word)
+        self._driver.locator(self.locators_base["submit_search"]).click()
         time.sleep(3)
-        products_list = self._driver.query_selector_all(self.locators["product_container"])
+        products_list = self._driver.query_selector_all(self.locators_base["product_container"])
         self._search_word = search_word
         return products_list
 

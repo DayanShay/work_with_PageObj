@@ -5,6 +5,7 @@ class MyAccount_page(BaseObj):
     def __init__(self, driver):
         super().__init__(driver)
         self._title = 'My account - My Store'
+    locators = {"home": ".home"}
 
     def home(self) -> "MainPage":
         """
